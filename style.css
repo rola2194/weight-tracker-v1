@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 body{
     background-image: url('acqua.png');
@@ -80,7 +80,7 @@ header{
         }
     }
     .save-btn{
-        background-image: url('/strawberryes/imagemini.jpg');
+        background-image: url('strawberryes/imagemini.jpg');
         background-size: cover;
         width: 100px;
         height: 50px;
