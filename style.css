@@ -10,8 +10,12 @@
   }
 body{
     touch-action: none;
+    touch-action: none;
 
-    background-image: url('acqua.png');
+    background-image: /*url('acqua.png') , */ linear-gradient(180deg, rgba(37, 239, 57, 0.531), rgba(122, 213, 48, 0.656) 70%);
+    background-blend-mode: overlay;
+
+
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -22,9 +26,9 @@ body{
     
 }
 header{
-    background-color: rgba(37, 61, 102, 0.393)  ;
+    background-color: rgba(37, 61, 102, 0)  ;
     padding: 10px 10px 10px 10px;
-    padding: 20px;
+    padding: 10px;
     nav{
 
         display: flex;
@@ -46,26 +50,22 @@ header{
 
 }
 .graph-inside{
-    background-color: #277746;
-    border-radius: 10px;
-    width: 100%;
-    height: 350px;
-    display: flex;
-    justify-content: center; 
-    #line-chart{
-        width: 100%;
-        height: 100%;
-        animation: grow 0.5s ease-in-out;
-    }
+
+    flex-grow: 1; 
+
+
 }
 .buttons-div{
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    font-weight: 900;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     gap: 20px;
     margin-top: 20px;
     .date-btn{
+        display: none;
         padding: 0 20px 0 20px;
         background-color: #63BEB9;
         height: 50px;
@@ -77,32 +77,22 @@ header{
         color: #c4f8f5;
     }
     .weight-btns{
+    background-image: /*url('acqua.png') , */ linear-gradient(180deg, rgb(210, 255, 120), rgb(133, 183, 33));
+
         display: flex;
         justify-content: center;
         align-items: center;
         text-align: center;
         z-index: 10;
-        background-image: url('watermelon-btn.jpg');
-        background-size: cover;
-        width: 300px;
-        height: 100px;
+        /* background-image: url('watermelon-btn.jpg');
+        background-size: cover; */
+        width: auto;
+        padding: 10px;
         border: none;
         border-radius: 10px;
-        box-shadow: 8px 8px 10px rgba(0, 0, 0, 0.5);
+        /* box-shadow: 8px 8px 10px rgba(0, 0, 0, 0.5); */
         font-size: 52px;
         color: rgb(211, 252, 211);
-        span.comma{
-            margin: 0 -5px 0 -5px
-        }
-        span.little-text{
-            font-size: 20px;
-            font-weight: 100;
-            margin-right: -20px;
-        };
-        div{
-            padding: 0 10px 0 10px
-        }
-        font-family: 'efourpro';
         /* ESSENZIALE: per il tocco */
 
         touch-action: none;
@@ -111,19 +101,30 @@ header{
         -webkit-user-select: none;
         -moz-user-select: none;
         -ms-user-select: none;
+        span.comma{
+            margin: 0 -5px 0 -5px;
+        }
+        span.little-text{
+            font-size: 20px;
+            font-weight: 300;
+            margin-left: -10px;
+        };
+        div{
+            padding: 0 10px 0 10px
+        }
         
     }
     .save-btn{
         background-image: url('strawberryes/imagemini.jpg');
         background-size: cover;
         width: 100px;
-        height: 50px;
+        height: 80px;
         border: none;
         border-radius: 10px;
         box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
         font-size: 25px;
+        font-weight: 900;
         color: rgb(238, 237, 201);
-        font-family: 'efourpro';
     }
 }
 
@@ -132,12 +133,12 @@ header{
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    margin-top: -250px;
     
     
 
     img{
-        width: 900px;
+        filter: brightness(1.2);
+        width: 700px;
         height: 100%;
         margin-bottom: -90px;
     }

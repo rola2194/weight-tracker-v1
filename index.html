@@ -3,13 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Weight Tracker</title>
+    <!-- styles -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
 </head>
 <body>
+    <!-- header -->
     <header>
         <nav>
             <a href="" class="share"><i class="fa-solid fa-share-nodes"></i></a>
@@ -17,13 +20,17 @@
             <a href=""><i class="fa-solid fa-bars"></i></a>
         </nav>
     </header>
+
+    <!-- graphs -->
     <div class="pregraph"></div>
     <div class="graph"> 
         <div class="graph-inside">
-            <canvas id="line-chart" ></canvas>
+            <canvas id="g1" ></canvas>
 
         </div>     
     </div>
+
+    <!-- buttons -->
     <div class="buttons-div">
         <button class="date-btn">12-12-2025</button>
         <div class="weight-btns">
@@ -37,15 +44,22 @@
             
         <button class="save-btn">SAVE</button>
     </div>
+
+    <!-- image -->
     <div class="img-div">
-        <img src="fruit1.png" alt="">
+        <img src="image.png" alt="">
     </div>
 
-    <script src="script.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js"></script>
-    <script src="graph.js"></script>
-    <script src="touch-buttons.js"></script>
-    <script src="date.js"></script>
+    <!-- #region my scripts ooooooooooooooooooooooooooooooooooooooooooooooooo-->
+    <script type="module" src="script.js"></script>
+    <script type="module" src="touch-buttons.js"></script>
+    <script type="module" src="date.js"></script>
+    <!-- graphs modify canvas id to 'g1' or 'g2' etc. -->
+    <script type="module" src="graphs/g1/graph.js"></script>
+    <script type="module" src="graphs/g2/gradient-area-chart.js"></script>
+    <!-- Firebase -->
+    <script type="module" src="https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js"></script>
+    <!-- #endregion -->
 </body>
 </html>

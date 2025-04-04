@@ -1,24 +1,56 @@
+//#region initialization firebase
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-analytics.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+import { getDatabase, ref, push, onValue, set, remove } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyBdeINfTJ0EVvrAmhZeeM_QrGDh3_ghr-I",
-  authDomain: "weight-app-7974f.firebaseapp.com",
-  projectId: "weight-app-7974f",
-  storageBucket: "weight-app-7974f.firebasestorage.app",
-  messagingSenderId: "198768261514",
-  appId: "1:198768261514:web:a58c09d51296777654b073",
-  measurementId: "G-D34SDD0M35"
+  // ...
+  // The value of `databaseURL` depends on the location of the database
+  databaseURL: "https://weight-app-7974f-default-rtdb.europe-west1.firebasedatabase.app/",
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
+const db = getDatabase(app);
+const dbRef = ref(db, 'weights');
+//#endregion
+const decine = document.getElementById('touchCounter-1');
+const unità = document.getElementById('touchCounter-2');
+const decimi = document.getElementById('touchCounter-3');
+
+
+// Set initial data
+
+// event listeners
+const saveBtn = document.querySelector('.save-btn');
+const dateBtn = document.querySelector('.date-btn');
+
+saveBtn.addEventListener('click', () => {
+  const today = dateBtn.textContent;
+  const dbSpecificPath = ref(db, 'weights/' + today);
+  const weight = Number(decine.textContent + unità.textContent + '.' + decimi.textContent);
+  set(dbSpecificPath, weight);
+});
+
+// Listen for changes
+let listeners = [];
+let latestData = [];
+onValue(dbRef, (snapshot) => {
+  const data = snapshot.val();
+  const dates = [];
+  const weights = [];
+  
+  
+  for (const [key, value] of Object.entries(data)) {
+    dates.push(key);
+    weights.push(value);
+  }
+  latestData = [dates, weights];
+  for (const listener of listeners) {
+    listener(dates, weights);
+  }
+});
+
+export { listeners, latestData };
