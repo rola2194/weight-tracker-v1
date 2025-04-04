@@ -27,5 +27,6 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
-          publish_dir: ./deploy
+          publish_dir: ./deploy/$VERSION
+          force_orphan: true
           keep_files: true
